@@ -61,7 +61,7 @@ const Introduction = () => {
                 {/* Pojemnik na przyciski  */}
                 <div className="flex flex-row gap-9">
                 <button className="bg-green rounded-full pl-6 pr-6 pt-3 pb-3.5 text-grey font-inter font-normal">Skontaktuj się z nami</button>
-                <button className="border-green pl-5 pr-5 pt-3 pb-3.5 border rounded-full text-green font-inter font-normal leading-normal flex gap-1 items-center">Zobacz nasze realizacje <ArrowDown /></button>
+                <button className="border-green pl-5.5 pr-5.5 pt-3 pb-3.5 border rounded-full text-green font-inter font-normal leading-normal flex gap-1 items-center">Zobacz nasze realizacje <ArrowDown /></button>
                 </div>
 
               </div>
