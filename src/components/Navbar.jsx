@@ -1,4 +1,4 @@
-import Logo from "../ui/Logo"
+import Logo from "../ui/svg/Logo"
 import { Search, ChevronDown } from "lucide-react"
 import { motion } from "motion/react"
 import { useState } from "react"
@@ -7,7 +7,7 @@ const Navbar = () => {
     const [searchBarVisible, setSearchBarVisible] = useState(false)
   return (
     <>
-        <nav className="w-full h-1/10 px-22">
+        <nav className="w-full h-1/10 px-22 ">
             <div className="flex items-center justify-between w-full h-full">
                 <p className="flex items-center"> <Logo /></p>
                 <div className="flex flex-row gap-12 font-inter"> 
