@@ -1,5 +1,6 @@
 import './App.css'
 import AboutUs from './components/AboutUs'
+import Footer from './components/Footer'
 import Instagram from './components/Instagram'
 import Introduction from './components/Introduction'
 import Navbar from './components/Navbar'
@@ -17,6 +18,7 @@ function App() {
       <AboutUs />
       <Projects />
       <Instagram />
+      <Footer />
     </div>
     </>
   )
