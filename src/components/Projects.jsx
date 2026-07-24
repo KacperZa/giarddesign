@@ -30,15 +30,15 @@ const breakpointColumns = {
 const Projects = () => {
     const [expanded, setExpanded] = useState(false)
     const [popupVisible, setPopupVisible] = useState(false)
-    const [selectedImage, setSelectedImage] = useState(null)
+    const [currentIndex, setCurrentIndex] = useState(0)
 
   return (
     <>
         <div className='min-h-full h-fit w-full bg-beige flex flex-col pt-30 gap-24'>
             <div className="grid grid-cols-12 gap-x-16">
                 <div className="flex flex-col gap-4 col-span-12 col-start-2">
-                    <p className="text-green text-xs leading-[150%]">Realizacje</p>
-                    <p className="text-5xl font-montserrat leading-[115%]">Nasze <span className="font-inter italic">projekty</span></p>
+                    <p className="text-green text-xs leading-[150%] tracking=[-1%] font-inter">Realizacje</p>
+                    <p className="text-5xl font-montserrat leading-[115%] tracking-[-3%]">Nasze <span className="font-inter italic tracking-normal">projekty</span></p>
                 </div>
             </div>
             <div className={` ${expanded ? 'max-h-[10000px]' : 'max-h-[170svh]'} transition-[max-height] duration-700 ease-in-out w-full relative  overflow-hidden bg-linear-to-t from-beige to-[#D6B79E]/0`} >
@@ -48,28 +48,29 @@ const Projects = () => {
                 columnClassName='px-4 [&>*]:mb-4'
                 >
                     {images.map((image, id) => (
-                        <img src={image} key={id} className='w-full pointer-events-auto' 
+                        <img src={image} key={id} className='w-full pointer-events-auto cursor-pointer' 
                         onClick={() => {
                             setPopupVisible(true)
-                            setSelectedImage(image)
+                            setCurrentIndex(id)
                             console.log('Kliknąłem')
-                        }} />
+                        }}
+                        />
                     ))}
 
                 </Masonry>
 
                 {expanded ? 
                     <div className='absolute inset-0  flex items-end justify-center p-11 pointer-events-none'>
-                        <button className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto' onClick={() =>setExpanded(false)}>Zwiń<ArrowUp /></button>
+                        <button className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto font-inter leading-[150%]' onClick={() =>setExpanded(false)}>Zwiń<ArrowUp /></button>
                     </div>
                 :
                 <div className='absolute inset-0 bg-linear-to-t from-beige to-[#D6B79E]/0 flex items-end justify-center p-11 pointer-events-none'>
-                        <button className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto' onClick={() =>setExpanded(true)}>Rozwiń<ArrowDown /></button>
+                        <button className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto font-inter leading-[150%]' onClick={() =>setExpanded(true)}>Rozwiń<ArrowDown /></button>
                     </div>
                 }
             </div>
         </div>
-                {popupVisible && <Popup src={selectedImage} />}
+                {popupVisible && <Popup images={images} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex} setPopupVisible={setPopupVisible}/>}
     </>
   )
 }
