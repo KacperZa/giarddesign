@@ -1,5 +1,5 @@
 import Logo from "../ui/svg/Logo"
-import { Search, ChevronDown } from "lucide-react"
+import { Search, ChevronDown, Menu } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 
@@ -54,6 +54,7 @@ const Navbar = () => {
     const [searchBarVisible, setSearchBarVisible] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
     const [isPinned, setIsPinned] = useState(false)
+    const [isMenuVisible, setIsMenuVisible] = useState(false)
 
     const isDropdownVisible = isPinned || isHovered
 
@@ -80,12 +81,13 @@ const Navbar = () => {
         return () => window.removeEventListener('click', handler)
     }, [])
 
+
   return (
     <>
         <nav className="w-full h-1/10 px-22 sticky top-0 z-50 bg-white ">
             <div className="flex items-center justify-between w-full h-full relative">
                 <p className="flex items-center"> <Logo /></p>
-                <div ref={searchBarRef} className={`flex flex-row  gap-12 font-inter  leading-[150%] tracking-[-1%]  justify-center items-center`}> 
+                <div ref={searchBarRef} className={` hidden md:flex flex-row  gap-12 font-inter  leading-[150%] tracking-[-1%]  justify-center items-center`}> 
                     
                     <motion.div 
                     className={`flex flex-row items-center gap-1  ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-pointer'} transition-opacity duration-200 ease-in-out relative`}
@@ -124,7 +126,8 @@ const Navbar = () => {
                     <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out`}>O firmie</div>
                     <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out`}>Realizacje</div>
                     <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out`}>Kontakt</div>
-                    <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-pointer'} transition-opacity duration-200 ease-in-out`}  onClick={() => setSearchBarVisible(prev => !prev)}><Search /></div>
+                    <motion.div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-pointer'} transition-opacity duration-200 ease-in-out`}  onClick={() => setSearchBarVisible(prev => !prev)}
+                        whileTap={{scale: 0.85}}><Search /></motion.div>
                     <AnimatePresence>
                         {searchBarVisible && 
                             <motion.input className="absolute top-1/2  -translate-y-1/2 right-0 bg-beige rounded-full h-10  p-3 focus:outline-none "
@@ -137,6 +140,25 @@ const Navbar = () => {
                         }
                     </AnimatePresence>
                 </div>
+                    <button className="md:hidden z-50" onClick={() => {setIsMenuVisible(prev => !prev)}}>
+                        <Menu />
+                    </button>
+                    <AnimatePresence>
+                        {isMenuVisible && (
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.25 }}
+                            className="lg:hidden absolute top-full left-0 w-full bg-white flex flex-col items-center gap-6 py-10 shadow-md z-40"
+                        >
+                            <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>Oferta</motion.a>
+                            <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>O firmie</motion.a>
+                            <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>Realizacje</motion.a>
+                            <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>Kontakt</motion.a>
+                        </motion.div>
+                        )}
+                    </AnimatePresence>
             </div>
             <div></div>
         </nav>
