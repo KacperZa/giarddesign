@@ -1,3 +1,5 @@
+import { motion } from "motion/react"
+
 const Instagram = () => {
   return (
     <>
@@ -7,7 +9,7 @@ const Instagram = () => {
                     <p className="xl:col-span-7 lg:col-span-3 xl:col-start-2 text-2xl md:text-3xl lg:text-4-5xl leading-[120%] font-montserrat md:tracking-[-2px]">Zostańmy w kontakcie! Znajdziesz nas na <span className="italic font-medium font-inter tracking-[1px]">Instagramie</span>.</p>
                     <div className="lg:col-span-3 xl:col-span-2 flex flex-col gap-4 md:gap-6 font-inter leading-[150%]">
                         <p className="font-inter text-sm md:text-base">Śledź nasze najnowsze realizacje!</p>
-                        <button className="rounded-full pl-6 pr-6 pb-3 pt-2.5 bg-grey text-green font-inter cursor-pointer self-start">Instagram</button>
+                        <motion.button whileTap={{scale: 0.95}} className="rounded-full pl-6 pr-6 pb-3 pt-2.5 bg-grey text-green font-inter cursor-pointer self-start">Instagram</motion.button>
                     </div>
                 </div>
             </div>

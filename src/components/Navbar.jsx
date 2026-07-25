@@ -106,11 +106,11 @@ const Navbar = () => {
                             }
                         </AnimatePresence>
                     </motion.div>
-                    <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out`}>O firmie</div>
-                    <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out`}>Realizacje</div>
-                    <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out`}>Kontakt</div>
+                    <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out cursor-pointer`}>O firmie</div>
+                    <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out cursor-pointer`}>Realizacje</div>
+                    <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out cursor-pointer`}>Kontakt</div>
                     <motion.div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-pointer'} transition-opacity duration-200 ease-in-out`}  onClick={() => setSearchBarVisible(prev => !prev)}
-                        whileTap={{scale: 0.85}}><Search /></motion.div>
+                        whileTap={{scale: 0.85}}><Search aria-label="Otwórz wyszukiwarkę"/></motion.div>
                     <AnimatePresence>
                         {searchBarVisible && 
                             <motion.input className="absolute top-1/2  -translate-y-1/2 right-0 bg-beige rounded-full h-10  p-3 focus:outline-none "
@@ -123,8 +123,8 @@ const Navbar = () => {
                         }
                     </AnimatePresence>
                 </div>
-                    <button className="md:hidden z-50" onClick={() => {setIsMenuVisible(prev => !prev)}}>
-                        <Menu />
+                    <button className="md:hidden z-50" onClick={() => {setIsMenuVisible(prev => !prev)}} aria-label="Otwórz menu">
+                        <Menu aria-hidden="true"/>
                     </button>
                     <AnimatePresence>
                         {isMenuVisible && (

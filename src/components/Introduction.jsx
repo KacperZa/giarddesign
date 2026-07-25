@@ -49,8 +49,8 @@ const nextSlide = () => {
                   </div>
                   {/* Pojemnik na przyciski  */}
                   <div className="flex flex-col md:flex-row gap-2 md:gap-4 self-center">
-                  <button className="bg-green rounded-full px-4 py-2 md:pl-6 md:pr-6 md:pt-3 md:pb-3.5 text-grey font-inter font-normal cursor-pointer leading-[150%] whitespace-nowrap">Skontaktuj się z nami</button>
-                  <button className="border-green px-4 py-2 md:pl-5.5 md:pr-5.5 md:pt-3 md:pb-3.5 border rounded-full text-green font-inter font-normal flex text-sm md:text-base gap-1 items-center cursor-pointer leading-[150%] whitespace-nowrap">Zobacz nasze realizacje <ArrowDown /></button>
+                  <motion.button whileTap={{scale: 0.95}} className="bg-green rounded-full px-4 py-2 md:pl-6 md:pr-6 md:pt-3 md:pb-3.5 text-grey font-inter font-normal cursor-pointer leading-[150%] whitespace-nowrap">Skontaktuj się z nami</motion.button>
+                  <motion.button whileTap={{scale: 0.95}} className="border-green px-4 py-2 md:pl-5.5 md:pr-5.5 md:pt-3 md:pb-3.5 border rounded-full text-green font-inter font-normal flex text-sm md:text-base gap-1 items-center cursor-pointer leading-[150%] whitespace-nowrap">Zobacz nasze realizacje <ArrowDown aria-hidden="true"/></motion.button>
                   </div>
 
                 </div>
@@ -64,8 +64,8 @@ const nextSlide = () => {
               </div>
               {/* Pojemnik na przyciski  */}
               <div className="absolute right-0 bottom-0 flex ">
-                <button className="md:w-20 md:h-18 w-16 h-14 bg-white flex justify-center items-center cursor-pointer" onClick={prevSlide}><ArrowLeft /></button>
-                <button className="md:w-20 md:h-18 w-16 h-14 bg-white flex justify-center items-center cursor-pointer" onClick={nextSlide}><ArrowRight /></button>
+                <button className="md:w-20 md:h-18 w-16 h-14 bg-white flex justify-center items-center cursor-pointer" onClick={prevSlide} aria-label='Przewiń na poprzedni slajd'><ArrowLeft aria-hidden="true"/></button>
+                <button className="md:w-20 md:h-18 w-16 h-14 bg-white flex justify-center items-center cursor-pointer" onClick={nextSlide} aria-label='Przewiń na następny slajd'><ArrowRight aria-hidden="true"/></button>
               </div>
             </section>
           </motion.section>

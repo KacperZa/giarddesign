@@ -14,6 +14,7 @@ import garden12 from '../assets/garden12.avif'
 
 import { ArrowDown, ArrowUp } from 'lucide-react'
 import { useState } from 'react'
+import { motion } from 'motion/react'
 
 import Popup from '../ui/Popup'
 
@@ -61,11 +62,11 @@ const Projects = () => {
 
                 {expanded ? 
                     <div className='absolute inset-0  flex items-end justify-center p-11 pointer-events-none'>
-                        <button className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto font-inter leading-[150%]' onClick={() =>setExpanded(false)}>Zwiń<ArrowUp /></button>
+                        <motion.button whileTap={{scale: 0.95}} className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto font-inter leading-[150%]' onClick={() =>setExpanded(false)}>Zwiń<ArrowUp /></motion.button>
                     </div>
                 :
                 <div className='absolute inset-0 bg-linear-to-t from-beige to-[#D6B79E]/0 flex items-end justify-center p-11 pointer-events-none'>
-                        <button className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto font-inter leading-[150%]' onClick={() =>setExpanded(true)}>Rozwiń<ArrowDown /></button>
+                        <motion.button whileTap={{scale: 0.95}} className='rounded-full border border-black pl-5.5 pr-5.5 pt-3 pb-3.5 flex flex-row gap-2 cursor-pointer pointer-events-auto font-inter leading-[150%]' onClick={() =>setExpanded(true)}>Rozwiń<ArrowDown /></motion.button>
                     </div>
                 }
             </div>

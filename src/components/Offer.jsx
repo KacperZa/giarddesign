@@ -34,7 +34,7 @@ const Offer = () => {
                         key={index}
                         >
                             <div className="flex flex-col gap-8">
-                                <Icon size={35} rotate={18} />
+                                <Icon size={35} rotate={18} aria-hidden="true"/>
                                 <div className="flex flex-col gap-3">
                                     <p className="font-montserrat text-2-5xl leading-[115%]">{title}</p>
                                     <p className="font-inter text-sm leading-[150%]">{desc}</p>

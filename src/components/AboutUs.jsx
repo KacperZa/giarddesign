@@ -1,5 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import garden4 from '../assets/garden4.jpg'
+import { motion } from 'motion/react'
 
 const AboutUs = () => {
   return (
@@ -33,7 +34,7 @@ const AboutUs = () => {
                 </div>
                 {/* Pojemnik na przyciski  */}
                 <div>
-                <button className="border-grey px-4 py-2 md:pl-5.5 md:pr-5.5 md:pt-3 md:pb-3.5 border rounded-full text-grey font-inter font-normal leading-[150%] flex gap-1 items-center">Poznaj nas bliżej  <ArrowRight /> </button>
+                <motion.button whileTap={{scale: 0.95}} className="border-grey px-4 py-2 md:pl-5.5 md:pr-5.5 md:pt-3 md:pb-3.5 border rounded-full text-grey font-inter font-normal leading-[150%] flex gap-1 items-center cursor-pointer">Poznaj nas bliżej  <ArrowRight aria-hidden="true"/> </motion.button>
                 </div>
 
               </div>
