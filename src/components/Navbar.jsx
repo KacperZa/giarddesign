@@ -1,7 +1,8 @@
 import Logo from "../ui/svg/Logo"
 import { Search, ChevronDown, Menu } from "lucide-react"
 import { motion, AnimatePresence } from "motion/react"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
+import { useClickOutside } from "../hooks/useClickOutside";
 
 // Warianty dla strzałki przy "Oferta"
 const arrowVariants = {
@@ -61,26 +62,8 @@ const Navbar = () => {
     const searchBarRef = useRef(null)
     const dropdownRef = useRef(null)
 
-    useEffect(() => {
-        const handler = (e) => {
-            if(!searchBarRef.current?.contains(e.target)) {
-                setSearchBarVisible(false)
-            }
-        }
-        window.addEventListener('click', handler)
-        return () => window.removeEventListener('click', handler)
-    }, [])
-
-    useEffect(() => {
-        const handler = (e) => {
-            if(!dropdownRef.current?.contains(e.target)) {
-                setIsPinned(false)
-            }
-        }
-        window.addEventListener('click', handler)
-        return () => window.removeEventListener('click', handler)
-    }, [])
-
+    useClickOutside(searchBarRef, () => setSearchBarVisible(false))
+    useClickOutside(dropdownRef, () => setIsPinned(false))
 
   return (
     <>
