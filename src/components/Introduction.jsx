@@ -48,7 +48,7 @@ const nextSlide = () => {
                     <p className="font-inter col-span-5 lg:col-span-4 text-pretty leading-[150%] md:text-base text-sm">Marka GiardDesign to wieloletnie doświadczenie i wysoka estetyka realizacji. Oferujemy kompleksowy zakres usług z indywidualnym podejściem do każdego projektu.</p>
                   </div>
                   {/* Pojemnik na przyciski  */}
-                  <div className="flex flex-col md:flex-row gap-2 md:gap-9 self-center">
+                  <div className="flex flex-col md:flex-row gap-2 md:gap-4 self-center">
                   <button className="bg-green rounded-full px-4 py-2 md:pl-6 md:pr-6 md:pt-3 md:pb-3.5 text-grey font-inter font-normal cursor-pointer leading-[150%] whitespace-nowrap">Skontaktuj się z nami</button>
                   <button className="border-green px-4 py-2 md:pl-5.5 md:pr-5.5 md:pt-3 md:pb-3.5 border rounded-full text-green font-inter font-normal flex text-sm md:text-base gap-1 items-center cursor-pointer leading-[150%] whitespace-nowrap">Zobacz nasze realizacje <ArrowDown /></button>
                   </div>

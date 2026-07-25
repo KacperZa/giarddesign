@@ -87,7 +87,7 @@ const Navbar = () => {
         <nav className="w-full h-1/10 px-22 sticky top-0 z-50 bg-white ">
             <div className="flex items-center justify-between w-full h-full relative">
                 <p className="flex items-center"> <Logo /></p>
-                <div ref={searchBarRef} className={` hidden md:flex flex-row  gap-12 font-inter  leading-[150%] tracking-[-1%]  justify-center items-center`}> 
+                <div ref={searchBarRef} className={` hidden md:flex flex-row gap-6 lg:gap-12 font-inter  leading-[150%] tracking-[-1%]  justify-center items-center`}> 
                     
                     <motion.div 
                     className={`flex flex-row items-center gap-1  ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-pointer'} transition-opacity duration-200 ease-in-out relative`}

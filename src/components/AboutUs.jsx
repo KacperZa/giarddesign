@@ -15,7 +15,7 @@ const AboutUs = () => {
           </section>
 
           {/* PRAWA SEKCJA  */}
-          <section className="col-span-1 lg:col-span-6 flex flex-col justify-start lg:justify-center bg-green md:pt-16 pt-8 lg:pt-0 pl-22 ">
+          <section className="col-span-1 lg:col-span-6 flex flex-col justify-start lg:justify-center bg-green md:pt-16 py-5 lg:pt-0 pl-22 ">
             {/* Pojemnik na elementy  */}
             <div className="grid grid-cols-6 gap-x-8 lg:gap-x-16">
               <div className="lg:col-span-5 col-span-6 justify-start flex flex-col gap-4 md:gap-8 lg:gap-20">

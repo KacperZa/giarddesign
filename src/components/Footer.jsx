@@ -9,7 +9,7 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row justify-between w-full md:gap-0 gap-5">
                     <LogoWhite />
                     <div className="flex flex-col lg:flex-row items-center gap-2 md:gap-6">
-                        <p className="text-grey leading-[150%] font-inter lg:text-base">Daj znać, co możemy dla Ciebie zrobić!</p>
+                        <p className="text-grey leading-[150%] font-inter lg:text-base text-sm">Daj znać, co możemy dla Ciebie zrobić!</p>
                         <button className="bg-green rounded-full pl-6 pr-6 pt-3 pb-3.5 text-white leading-[150%] font-inter justify-self-center">Skontaktuj się z nami</button>
                     </div>
                 </div>
