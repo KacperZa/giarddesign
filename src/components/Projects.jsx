@@ -53,7 +53,6 @@ const Projects = () => {
                         onClick={() => {
                             setPopupVisible(true)
                             setCurrentIndex(id)
-                            console.log('Kliknąłem')
                         }}
                         />
                     ))}
