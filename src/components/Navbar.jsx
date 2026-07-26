@@ -45,7 +45,7 @@ const dropdownItemVariants = {
         opacity: 0,
         y: -10,
         transition: {
-            duration: 0.1
+            duration: 0.3
         }
     }
 };
@@ -90,6 +90,7 @@ const MobileDropdownItemVariants = {
 
 const Navbar = () => {
     const [searchBarVisible, setSearchBarVisible] = useState(false)
+    const [mobileSearchBarVisible, setMobileSearchBarVisible] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
     const [isPinned, setIsPinned] = useState(false)
     const [isMenuVisible, setIsMenuVisible] = useState(false)
@@ -149,20 +150,38 @@ const Navbar = () => {
                     <div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-default'} transition-opacity duration-200 ease-in-out cursor-pointer`}>Kontakt</div>
                     <motion.div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-pointer'} transition-opacity duration-200 ease-in-out`}  onClick={() => setSearchBarVisible(prev => !prev)}
                         whileTap={{scale: 0.85}}><Search aria-label="Otwórz wyszukiwarkę"/></motion.div>
-                    <AnimatePresence>
-                        {searchBarVisible && 
-                            <motion.input className="absolute top-1/2  -translate-y-1/2 right-0 bg-beige rounded-full h-10  p-3 focus:outline-none "
-                            autoFocus
+                        {/* Wysuwana wyszukiwarka dla ekranów większych niż telefon */}
+                        <AnimatePresence>
+                        {searchBarVisible &&
+                            <motion.input
+                                key="desktop-search-input"
+                                className="absolute top-1/2 -translate-y-1/2 right-0 bg-beige rounded-full h-10 p-3 pr-10 focus:outline-none"
+                                autoFocus
                                 initial={{width: '0', opacity: 0}}
                                 animate={{width: '17.5rem', opacity: 1}}
                                 exit={{width: '0', opacity: 0}}
                                 transition={{ duration: 0.3}}
+                                placeholder="Wyszukaj"
                             />
-                        }
-                    </AnimatePresence>
+                            }
+                        </AnimatePresence>
+
+                        <AnimatePresence>
+                            {searchBarVisible &&
+                            <motion.div
+                                key="desktop-search-input-icon"
+                                className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+                                initial={{opacity: 0}}
+                                animate={{opacity: 1}}
+                                exit={{opacity: 0}}
+                            >
+                                <Search size={18} aria-hidden="true" />
+                            </motion.div>
+                            }
+                        </AnimatePresence>
                 </div>
                 {/* // hamburger menu na telefony  */}
-                    <button className="md:hidden z-50" onClick={() => {setIsMenuVisible(prev => !prev)}} aria-label="Otwórz menu">
+                    <button className="md:hidden z-50" onClick={() => {setIsMenuVisible(prev => !prev); setMobileSearchBarVisible(false)}} aria-label="Otwórz menu">
                         <Menu aria-hidden="true"/>
                     </button>
                     <AnimatePresence>
@@ -172,8 +191,29 @@ const Navbar = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.25 }}
-                            className="lg:hidden absolute top-full left-0 w-full bg-white flex flex-col items-center gap-6 py-10 shadow-md z-40"
+                            className="lg:hidden absolute top-full left-0 w-full bg-white flex flex-col items-center gap-6 py-10 px-5 shadow-md z-40"
                         >
+                            {/* Wysuwana wyszukiwarka dla telefonów  */}
+                            <AnimatePresence>
+                                {mobileSearchBarVisible ? 
+                                <div className="relative">
+                                    <motion.input key="mobile-search-input" className=" w-full bg-beige rounded-full h-10 p-3 pr-10 focus:outline-none text-sm"
+                                    placeholder="Wyszukaj"
+                                    autoFocus
+                                        initial={{width: '0', opacity: 0}}
+                                        animate={{width: '100%', opacity: 1}}
+                                        exit={{width: '0', opacity: 0}}
+                                        transition={{ duration: 0.3}}
+                                    /> 
+                                    <Search key="mobile-search-icon" className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" size={18} aria-hidden="true"/>
+                                    
+                                </div>
+
+                                :
+                                <motion.div className={` ${searchBarVisible ? 'opacity-0 pointer-events-none' : 'cursor-pointer'} transition-opacity duration-200 ease-in-out `}  onClick={() => setMobileSearchBarVisible(prev => !prev)}
+                                whileTap={{scale: 0.85}}><Search aria-label="Otwórz wyszukiwarkę"/></motion.div>
+                                }
+                            </AnimatePresence>
                             <motion.a className="font-medium flex flex-row items-center " onClick={() => setIsMobileDropdownVisible(prev => !prev)} whileTap={{scale: 0.9}}>Oferta <ChevronDown size={20}/></motion.a>
                             <AnimatePresence>
                                 {isMobileDropdownVisible &&
@@ -183,6 +223,7 @@ const Navbar = () => {
                                     exit='exit'
                                     variants={MobileDropdownContainerVariants}
                                     >
+                                        
                                         <motion.div variants={MobileDropdownItemVariants} className="">Projekty</motion.div>
                                         <motion.div variants={MobileDropdownItemVariants} className="">Oferta</motion.div>
                                         <motion.div variants={MobileDropdownItemVariants} className="">O firmie</motion.div>
