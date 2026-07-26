@@ -26,7 +26,7 @@ const Offer = () => {
             </div>
 
             {/* Pojemnik na karty  */}
-            <div className="col-span-1 md:col-span-12 flex flex-row md:px-22 px-6 md:gap-16 justify-between md:col-start-">
+            <div className="col-span-1 md:col-span-12 flex flex-row md:px-22 px-6 md:gap-16 justify-between">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-x-16 w-full">
                     {offers.map(({icon: Icon, title, desc}, index) => (
                         <motion.div className="bg-white px-8 md:px-10 md:py-12 py-10 h-auto md:h-92.5 lg:col-span-4 rounded-3xl flex flex-col justify-between cursor-pointer group md:gap-0 gap-2"
@@ -40,7 +40,7 @@ const Offer = () => {
                                     <p className="font-inter text-sm leading-[150%]">{desc}</p>
                                 </div>
                             </div>
-                            <p className="flex flex-row text-green underline md:underline-animate font-inter leading-[150%]"> Dowiedz się więcej <ChevronRight /></p>
+                            <p className="flex flex-row text-green underline lg:underline-animate lg:no-underline font-inter leading-[150%]"> Dowiedz się więcej <span> <ChevronRight /></span></p>
                         </motion.div>
                     ))}
                 </div>
