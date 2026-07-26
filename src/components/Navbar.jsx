@@ -50,12 +50,50 @@ const dropdownItemVariants = {
     }
 };
 
+// Warianty dla containera dropdowna dla telefonów
+const MobileDropdownContainerVariants = {
+    hidden: {
+        height: 0
+    },
+    show: {
+        height: 'auto',
+        transition: {
+            staggerChildren: 0.2,
+        },
+    },
+    exit: {
+        height: 0,
+        transition: {
+            duration: 0.8,
+            staggerChildren: 0.1,
+            staggerDirection: -1
+        }
+    },
+};
+
+// Warianty dla div-ow w srodku dropdownu dla telefonów
+
+const MobileDropdownItemVariants = {
+    hidden: {
+        opacity: 0,
+    },
+    show: {
+        opacity: 1,
+    },
+    exit: {
+        opacity: 0,
+        transition: {
+            duration: 0.1
+        }
+    }
+};
 
 const Navbar = () => {
     const [searchBarVisible, setSearchBarVisible] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
     const [isPinned, setIsPinned] = useState(false)
     const [isMenuVisible, setIsMenuVisible] = useState(false)
+    const [isMobileDropdownVisible, setIsMobileDropdownVisible] = useState(false)
 
     const isDropdownVisible = isPinned || isHovered
 
@@ -123,6 +161,7 @@ const Navbar = () => {
                         }
                     </AnimatePresence>
                 </div>
+                {/* // hamburger menu na telefony  */}
                     <button className="md:hidden z-50" onClick={() => {setIsMenuVisible(prev => !prev)}} aria-label="Otwórz menu">
                         <Menu aria-hidden="true"/>
                     </button>
@@ -135,7 +174,23 @@ const Navbar = () => {
                             transition={{ duration: 0.25 }}
                             className="lg:hidden absolute top-full left-0 w-full bg-white flex flex-col items-center gap-6 py-10 shadow-md z-40"
                         >
-                            <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>Oferta</motion.a>
+                            <motion.a className="font-medium flex flex-row items-center " onClick={() => setIsMobileDropdownVisible(prev => !prev)} whileTap={{scale: 0.9}}>Oferta <ChevronDown size={20}/></motion.a>
+                            <AnimatePresence>
+                                {isMobileDropdownVisible &&
+                                    <motion.div className="flex flex-col gap-2 text-sm justify-center font-inter w-full items-center rounded-lg"
+                                    initial='hidden'
+                                    animate='show'
+                                    exit='exit'
+                                    variants={MobileDropdownContainerVariants}
+                                    >
+                                        <motion.div variants={MobileDropdownItemVariants} className="">Projekty</motion.div>
+                                        <motion.div variants={MobileDropdownItemVariants} className="">Oferta</motion.div>
+                                        <motion.div variants={MobileDropdownItemVariants} className="">O firmie</motion.div>
+                                        <motion.div variants={MobileDropdownItemVariants} className="">Nasze projekty</motion.div>
+                                    </motion.div>
+                                }
+                            </AnimatePresence>
+
                             <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>O firmie</motion.a>
                             <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>Realizacje</motion.a>
                             <motion.a className="font-medium" onClick={() => setIsMenuVisible(false)} whileTap={{scale: 0.9}}>Kontakt</motion.a>
