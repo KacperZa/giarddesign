@@ -33,12 +33,12 @@ const nextSlide = () => {
         >
         {images.map((image, id) =>  (
         <motion.section 
-          className='max-h-[90dvh] min-w-full grid lg:grid-cols-12 lg:grid-rows-1 grid-rows-2'
+          className='min-h-[90dvh] min-w-full grid lg:grid-cols-12 lg:grid-rows-1 grid-rows-2'
           key={id}
           >
             
             {/* LEWA SEKCJA  */}
-            <section className="col-span-1 lg:col-span-6 flex flex-col justify-start md:justify-center bg-beige pt-8 md:pt-0 xl:pl-22 px-11">
+            <section className="col-span-1 lg:col-span-6 flex flex-col justify-start md:justify-center bg-beige py-4 md:pt-0 xl:pl-22 px-11">
               {/* Pojemnik na elementy  */}
               <div className="grid grid-cols-6 gap-x-8 lg:gap-x-16">
                 <div className="lg:col-span-5 col-span-6 justify-start flex flex-col gap-2 md:gap-8 lg:gap-20">
@@ -49,7 +49,7 @@ const nextSlide = () => {
                   </div>
                   {/* Pojemnik na przyciski  */}
                   <div className="flex flex-col md:flex-row gap-2 md:gap-4 self-center">
-                  <motion.button whileTap={{scale: 0.95}} className="bg-green rounded-full px-4 py-2 md:pl-6 md:pr-6 md:pt-3 md:pb-3.5 text-grey font-inter font-normal cursor-pointer leading-[150%] whitespace-nowrap">Skontaktuj się z nami</motion.button>
+                  <motion.button whileTap={{scale: 0.95}} className="bg-green rounded-full px-4 py-2 md:pl-6 md:pr-6 md:pt-3 md:pb-3.5 text-grey font-inter font-normal cursor-pointer leading-[150%] whitespace-nowrap md:font-base font-xs">Skontaktuj się z nami</motion.button>
                   <motion.button whileTap={{scale: 0.95}} className="border-green px-4 py-2 md:pl-5.5 md:pr-5.5 md:pt-3 md:pb-3.5 border rounded-full text-green font-inter font-normal flex text-sm md:text-base gap-1 items-center cursor-pointer leading-[150%] whitespace-nowrap">Zobacz nasze realizacje <ArrowDown aria-hidden="true"/></motion.button>
                   </div>
 
@@ -60,7 +60,7 @@ const nextSlide = () => {
             {/* PRAWA SEKCJA  */}
             <section className="col-span-1 lg:col-span-6 relative w-full h-full">
               <div className="w-full h-full">
-                <img className="object-cover  w-full h-full" src={image} alt="" />
+                <img className="object-cover  w-full h-full" draggable={false} src={image} alt="" />
               </div>
               {/* Pojemnik na przyciski  */}
               <div className="absolute right-0 bottom-0 flex ">
