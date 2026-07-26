@@ -1,16 +1,53 @@
-# React + Vite
+# GiardDesign
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Strona internetowa wykonana w ramach zadania rekrutacyjnego dla GiardDesign — firmy zajmującej się projektowaniem, wizualizacją i realizacją ogrodów.
 
-Currently, two official plugins are available:
+##  Stack technologiczny
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React** (v19) + **Vite**
+- **JavaScript**
+- **Tailwind CSS v4**
+- **Framer Motion** — animacje, przejścia `AnimatePresence`
+- **React Portal** — popup z galerią zdjęć renderowany poza głównym drzewem DOM
+- **react-masonry-css** — układ typu masonry dla galerii realizacji
+- **lucide-react** — ikony
 
-## React Compiler
+##  Struktura projektu
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── assets/       # obrazy, grafiki
+├── components/   # komponenty widoku (Navbar, Introduction, Offer, Popup, ...)
+├── hooks/        # własne hooki (np. useClickOutside)
+└── ui/
+    └── svg/      # komponenty SVG (np. Logo)
+```
 
-## Expanding the ESLint configuration
+##  Funkcjonalności
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Responsywny layout** (mobile-first) z dopracowanymi breakpointami dla telefonów, tabletów i desktopa
+- **Interaktywny slider/karuzela** zdjęć w sekcji głównej — obsługa swipe'a (touch/drag) oraz przycisków nawigacyjnych
+- **Animowana nawigacja** — rozwijane dropdowny (desktop i mobile) z animacjami wejścia/wyjścia opartymi o `AnimatePresence` i warianty Framer Motion
+- **Wysuwana wyszukiwarka** w navbarze z płynną animacją szerokości
+- **Popup z galerią zdjęć** renderowany przez React Portal, z nawigacją strzałkami i animacją pojawiania się/znikania
+- **Galeria realizacji** w układzie masonry (react-masonry-css)
+
+##  Uruchomienie lokalne
+
+```bash
+# instalacja zależności
+npm install
+
+# serwer deweloperski
+npm run dev
+
+# build produkcyjny
+npm run build
+
+# podgląd buildu produkcyjnego
+npm run preview
+```
+
+##  Autor
+
+Kacper Za. — projekt wykonany jako zadanie rekrutacyjne.
